@@ -97,59 +97,7 @@ the removeFromCart takes the index of the product, not the index of the cart */
 /* Takes the number of taken classes and returns the total price
  THIS WILL NOT WORK AS COMPUTED, DOES NOT UPDATE */
         getCartCount: function () {
-            return this.cart.quantity.reduce((sum, a) => sum + a, 0);;
-        }
-    },
-    computed: {
-        canCheckout: function () {
-            return this.cart.product.length > 0;
-        },
-/* Sorts the products depending on the selected sort
-Idea from: https://stackoverflow.com/questions/42883835/sort-an-array-in-vue-js */
-        sortedProducts: function () {
-            return this.product.sort((a, b) => {
-                if (this.selectedOrder === 'ascending') {
-                    return a[this.selectedSort] > b[this.selectedSort] ? 1 : -1;
-                } else {
-                    return a[this.selectedSort] < b[this.selectedSort] ? 1 : -1;
-                }
-            });
-        },
-/* Filtering function for the search bar according to what we have on the
-product array and starts with what is on the search variable */
-        filteredProducts: function () {
-            return this.sortedProducts.filter((product) => {
-                if(product.name.toLowerCase().startsWith(this.search.toLowerCase())
-                    || product.description.toLowerCase().includes(this.search.toLowerCase())
-                    || product.location.toLowerCase().startsWith(this.search.toLowerCase())
-                    || (product.price >= parseInt(this.search)) || (product.availability >= parseInt(this.search))) {
-                        return true;
-                    }
-                return false;
-            });
-        },
-/* autocomplete for the search bar; if search is empty, do not return anything
-when search has any data, return the first name of a product returned */
-        autocomplete: function () {
-            if (this.search == '') {
-                return '';
-            } else if (this.filteredProducts.length > 0) {
-                return this.filteredProducts[0].name;
-            }
-            return '';
-        }
-    },
-    mounted: function () {
-        this.loading = true;
-        fetch('http://localhost:3000/lessons')
-        .then(response => response.json())
-        .then(data => {
-            this.product = data;
-            this.loading = false;
-        })
-        .catch(error => {
-            console.log(error);
-            this.loading = false;
+
         });
     },
     function () {
