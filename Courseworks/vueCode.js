@@ -166,5 +166,3 @@ when search has any data, return the first name of a product returned */
         });
     }
 });
-
-WHY MAKE US HAVE 10 CHANGES
