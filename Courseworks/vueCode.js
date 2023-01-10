@@ -1,32 +1,7 @@
 var shopApp = new Vue({
     el: '#shop',
     data: {
-/* Array for our products */
-        product: [],
-/* Array for our cart where referenced products will be held */
-        cart: {product: [], quantity: [], totalPrice: 0},
-        total: 0,
-        sorts: ['name', 'price', 'availability', 'location'],
-        selectedSort: 'name',
-        selectedOrder: 'ascending',
-        checkoutStage: false,
-        shopStage: true,
-        checkoutName: '',
-        checkoutPhone: '',
-        search: ''
-    },
-    methods: {
-/* Adds a single product to the cart, if it exists, it increases the quantity by one and does not push the item */
-        addToCart: function (index) {
-            if(this.canAddToCart(index)){
-                if (this.cart.product.indexOf(this.product[index]) == -1) {
-                    this.cart.product.push(this.product[index]);
-                    this.cart.quantity.push(1);
-                } else {
-                    this.cart.quantity[this.cart.product.indexOf(this.product[index])] += 1;
-                }
-                this.product[index].availability -= 1;
-                this.cart.totalPrice += this.product[index].price;
+/* Array for our products */                this.cart.totalPrice += this.product[index].price;
             }
             this.$forceUpdate();
         },
