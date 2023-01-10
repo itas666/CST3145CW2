@@ -139,19 +139,6 @@ when search has any data, return the first name of a product returned */
             return '';
         }
     },
-    mounted: function () {
-        this.loading = true;
-        fetch('http://localhost:3000/lessons')
-        .then(response => response.json())
-        .then(data => {
-            this.product = data;
-            this.loading = false;
-        })
-        .catch(error => {
-            console.log(error);
-            this.loading = false;
-        });
-    },
     function () {
         this.loading = true;
         fetch('http://localhost:3000/users')
